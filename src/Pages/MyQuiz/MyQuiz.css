@@ -1,0 +1,15 @@
+.myQuiz {
+  display: flex;
+  justify-content: space-between;
+  padding: 0vw 10vw;
+  align-items: center;
+  height: 30vh;
+  width: 100%;
+}
+.myQuizHeading {
+  font-size: x-large;
+  font-weight: bold;
+}
+.tablemanage {
+  padding: 0vh 20vh;
+}

@@ -1,0 +1,72 @@
+.quizbackground {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 90%;
+  width: 100vw;
+  background-color: rgb(227, 239, 247);
+  padding: 20px;
+}
+.heading {
+  font-size: x-large;
+  font-weight: bold;
+  padding-right: 60vw;
+}
+.background {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  align-items: center;
+  height: 80vh;
+  width: 75vw;
+  border: 1px solid;
+  box-shadow: 5px solid grey;
+}
+.quesAns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+}
+.submit {
+  display: flex;
+  justify-content: flex-end;
+  width: 75vw;
+  padding: 10px 0px;
+  background-color: rgb(247, 245, 241);
+}
+.forOption {
+  background-color: white;
+  width: 20vw;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.innerOption {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.optioncontainer {
+  display: flex;
+  margin-top: 10px;
+  justify-content: start;
+  flex-wrap: wrap;
+  width: 58vw;
+  gap: 20px;
+}
+.correct {
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 30px;
+}
+.errorPera {
+  font-size: large;
+  font-weight: 500;
+  color: green;
+  padding: 10px;
+}
