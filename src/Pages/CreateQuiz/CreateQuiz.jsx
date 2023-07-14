@@ -40,15 +40,28 @@ function CreateQuiz() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    const handlerror = setTimeout(() => {
+    const handleError = setTimeout(() => {
       if (added) {
         setAdded(false);
       }
     }, 2000);
     return () => {
-      clearTimeout(handlerror);
+      clearTimeout(handleError);
     };
   }, [added]);
+  useEffect(() => {
+    const listener = (event) => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        console.log("Enter key was pressed. Run your function.");
+        event.preventDefault();
+        handleAddoption();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [option.title]);
 
   const handleAddQuiz = (e) => {
     e.preventDefault();
@@ -110,7 +123,6 @@ function CreateQuiz() {
         title: "",
       });
       questionInputRef.current.value = "";
-      console.log(ques);
     }
   };
   const handleAddoption = () => {
@@ -130,8 +142,6 @@ function CreateQuiz() {
         options: [...ques.options, option],
       });
       optionInputRef.current.value = "";
-
-      console.log(ques);
     }
   };
   const addOption = (e) => {

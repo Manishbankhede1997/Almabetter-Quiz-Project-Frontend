@@ -6,6 +6,7 @@ const initialState = {
   name: "",
   playQuiz: [],
   answers: [],
+  selectedQuizIndex: 0,
 };
 
 // the reducer containes all the necessary functions in order to update our state accordingly //
@@ -71,6 +72,13 @@ export const reducer = (state = initialState, actions) => {
       name: "",
       playQuiz: [],
       answers: [],
+    };
+  }
+  if (actions.type === TYPE.SET_SELECTED_QUIZ_INDEX) {
+    console.log("state", actions.payload, state);
+    return {
+      ...state,
+      selectedQuizIndex: actions.payload,
     };
   }
 

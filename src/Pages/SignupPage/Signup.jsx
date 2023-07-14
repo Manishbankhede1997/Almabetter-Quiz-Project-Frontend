@@ -4,8 +4,13 @@ import "./Signup.css";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Error from "../../Components/Error";
+import { useDispatch, useSelector } from "react-redux";
+import { getName } from "../../Redux/Actions";
 function Signup() {
   const navigation = useNavigate();
+  const dispatch = useDispatch();
+  const Quiz = useSelector((state) => state.reducer.quiz);
+  const Index = useSelector((state) => state.selectedQuizIndex);
   const [name, setName] = useState("");
   const [error, setError] = useState({ error: false, message: "" });
   const handleChange = (e) => {
@@ -20,6 +25,8 @@ function Signup() {
     if (name === "") {
       setError({ error: true, message: "Please fill  Full-Name" });
     } else {
+      dispatch(getName(name));
+
       navigation("/playQuiz");
       console.log("name", name);
     }
@@ -47,7 +54,7 @@ function Signup() {
           />
           {error.error && <Error message={error.message} />}
         </div>
-        <br />
+        {/* <div>{Quiz[0].title} </div> */}
         <div>
           <Button
             variant="outlined"

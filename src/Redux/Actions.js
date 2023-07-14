@@ -8,6 +8,7 @@ export const TYPE = {
   PLAYQUIZ: "PLAYQUIZ",
   GETANSWER: "GETANSWER",
   RESET: "RESET",
+  SET_SELECTED_QUIZ_INDEX: "SET_SELECTED_QUIZ_INDEX",
 };
 
 export const addQuiz = (data) => {
@@ -54,5 +55,12 @@ export const getAnswer = (ans) => {
 export const resetQuiz = () => {
   return {
     type: TYPE.RESET,
+  };
+};
+export const setSelectedQuizIndex = (index) => {
+  console.log("india", index);
+  return {
+    type: TYPE.SET_SELECTED_QUIZ_INDEX,
+    payload: index,
   };
 };

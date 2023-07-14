@@ -2,7 +2,7 @@ import "./MyQuiz.css";
 import React from "react";
 import { Button } from "@mui/material";
 import MyTable from "./Table";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function MyQuiz() {
   return (

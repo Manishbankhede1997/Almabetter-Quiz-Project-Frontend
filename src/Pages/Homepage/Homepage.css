@@ -1,4 +1,4 @@
-/* .create-quiz {
+.create-quiz {
   display: flex;
   height: 30vw;
   align-items: center;
@@ -9,7 +9,7 @@
   background-color: rgb(169, 187, 9);
   height: 45%;
   width: 30%;
-} */
+}
 .quiz {
   display: flex;
   justify-content: center;
@@ -17,4 +17,10 @@
   align-items: center;
   gap: 10vw;
   margin-top: 20vh;
+}
+@media (max-width: 768px) {
+  .Card {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }
