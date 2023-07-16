@@ -12,8 +12,11 @@ function Navbar() {
   };
   return (
     <div className="Navbar">
-      <img className="logoNav" src="logo-a.png" alt="Almabetter" />
-      <div className="Nav">
+      <div className="navleft">
+        <img className="logoNav" src="logo-a.png" alt="Almabetter" />
+      </div>
+
+      <div className="navRight">
         <Link to="/">
           <button onClick={handleQuiz}>Home</button>
         </Link>

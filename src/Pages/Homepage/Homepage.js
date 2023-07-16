@@ -7,9 +7,11 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+
 function Homepage() {
   return (
     <div className="quiz">
+      {/* Create New Quiz Card */}
       <Link to="/createQuiz">
         <div>
           <Card sx={{ maxWidth: 200, borderRadius: "10%" }}>
@@ -17,6 +19,7 @@ function Homepage() {
               <CardMedia component="img" image="m1.png" alt="green iguana" />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
+                  {/* Button for creating a new quiz */}
                   <Button>Create New Quiz</Button>
                 </Typography>
               </CardContent>
@@ -25,6 +28,7 @@ function Homepage() {
         </div>
       </Link>
 
+      {/* My Quiz Card */}
       <Link to="/myQuiz">
         <div>
           <Card sx={{ maxWidth: 200, borderRadius: "10%" }}>
@@ -37,6 +41,7 @@ function Homepage() {
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
+                  {/* Text for displaying "MY QUIZ" */}
                   MY QUIZ
                 </Typography>
               </CardContent>
@@ -44,6 +49,8 @@ function Homepage() {
           </Card>
         </div>
       </Link>
+
+      {/* Play Quiz Card */}
       <Link to="/signup">
         <div>
           <Card sx={{ maxWidth: 200, borderRadius: "10%" }}>
@@ -56,6 +63,7 @@ function Homepage() {
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
+                  {/* Text for displaying "PLAY QUIZ" */}
                   PLAY QUIZ
                 </Typography>
               </CardContent>
@@ -63,10 +71,6 @@ function Homepage() {
           </Card>
         </div>
       </Link>
-      {/* <div className="create-quiz">
-        <button>Create New Quiz</button>
-        <button>My Quiz</button>
-      </div> */}
     </div>
   );
 }

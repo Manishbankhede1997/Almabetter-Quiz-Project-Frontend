@@ -11,9 +11,14 @@ import { useNavigate } from "react-router-dom";
 import HomePageModal from "./Modals";
 
 function CreateQuiz() {
+  // Refs to handle input elements
   const questionInputRef = useRef(null);
   const optionInputRef = useRef(null);
+
+  // Navigation hook
   const navigation = useNavigate();
+
+  // State for quiz, question, and option data
   const [quiz, setQuiz] = useState({
     title: "",
     description: "",
@@ -31,6 +36,8 @@ function CreateQuiz() {
     id: "",
     title: "",
   });
+
+  // State to manage the count of questions and errors
   const [count, setCount] = useState(1);
   const [error, setError] = useState({
     error: false,
@@ -38,7 +45,10 @@ function CreateQuiz() {
   });
   const [added, setAdded] = useState(false);
 
+  // Redux dispatch hook
   const dispatch = useDispatch();
+
+  // useEffect to clear added status after a certain time
   useEffect(() => {
     const handleError = setTimeout(() => {
       if (added) {
@@ -49,10 +59,11 @@ function CreateQuiz() {
       clearTimeout(handleError);
     };
   }, [added]);
+
+  // useEffect to handle the Enter key press for adding options
   useEffect(() => {
     const listener = (event) => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
-        console.log("Enter key was pressed. Run your function.");
         event.preventDefault();
         handleAddoption();
       }
@@ -63,20 +74,26 @@ function CreateQuiz() {
     };
   }, [option.title]);
 
+  // Function to add the quiz and handle validation
   const handleAddQuiz = (e) => {
     e.preventDefault();
     if (quiz.questions.length <= 0) {
-      setError({ error: true, message: "minimum one quiz required for quiz" });
+      setError({
+        error: true,
+        message: "Minimum one question required for the quiz",
+      });
       return;
     } else if (quiz.title.length < 5) {
-      setError({ error: true, message: "please set Title firstly" });
+      setError({ error: true, message: "Please set a title first" });
     } else {
       setError(false);
-      console.log("quiz", quiz);
+
       dispatch(addQuiz(quiz));
       navigation("/myQuiz");
     }
   };
+
+  // Function to delete an option
   const deleteOption = (id) => {
     const updatedOption = ques.options.filter((opt) => opt.id !== id);
     setQues({
@@ -84,6 +101,8 @@ function CreateQuiz() {
       options: updatedOption,
     });
   };
+
+  // Function to handle question addition
   const handleQuestion = () => {
     if (ques.options.length < 2) {
       setError({
@@ -94,13 +113,13 @@ function CreateQuiz() {
     } else if (!ques.correctoption) {
       setError({
         error: true,
-        message: "Please cheack correct option",
+        message: "Please check the correct option",
       });
       return;
     } else if (!ques.question) {
       setError({
         error: true,
-        message: "Please write question first",
+        message: "Please write the question first",
       });
       return;
     } else {
@@ -125,6 +144,8 @@ function CreateQuiz() {
       questionInputRef.current.value = "";
     }
   };
+
+  // Function to add an option
   const handleAddoption = () => {
     setError({ error: false, message: "" });
 
@@ -144,6 +165,8 @@ function CreateQuiz() {
       optionInputRef.current.value = "";
     }
   };
+
+  // Function to update the option state
   const addOption = (e) => {
     setOption({
       id: Date.now(),
@@ -152,8 +175,10 @@ function CreateQuiz() {
   };
 
   return (
-    <div>
-      <HomePageModal />
+    <>
+      {/* Modal for displaying the MCQ(Single Correct) button */}
+      <HomePageModal buttonName="MCQ(Single Correct)" />
+
       <div className="quizbackground">
         <h1 className="heading">Create New Quiz</h1>
 
@@ -163,18 +188,19 @@ function CreateQuiz() {
           <div
             style={{
               border: "1px solid grey",
-              width: "80%",
+              width: "90%",
               padding: "5px",
               textAlign: "center",
             }}
           >
+            {/* Input for Quiz Title */}
             <TextField
               style={{
                 marginBottom: 10,
                 backgroundColor: "white",
                 width: "98%",
               }}
-              label="Quiz Tittle"
+              label="Quiz Title"
               variant="outlined"
               size="small"
               onChange={(e) => {
@@ -185,11 +211,13 @@ function CreateQuiz() {
                 });
               }}
             />
+
+            {/* Textarea for Quiz Description */}
             <TextareaAutosize
               aria-label="minimum height"
               color="neutral"
               variant="outlined"
-              minRows={3}
+              minRows={2}
               style={{ width: "98%", border: "1px solid", paddingLeft: "10px" }}
               placeholder="Add description"
               onChange={(e) => {
@@ -200,19 +228,21 @@ function CreateQuiz() {
               }}
             />
           </div>
+
+          {/* Section for adding questions and options */}
           <div className="quesAns">
-            <span>question {count}</span>
+            <span style={{ paddingBottom: "2px" }}>Question {count}</span>
             <TextField
               inputRef={questionInputRef}
               variant="outlined"
+              placeholder="Write Questions"
               style={{
-                width: "58vw",
+                width: "90%",
                 border: "1px solid",
                 backgroundColor: "white",
               }}
               onChange={(e) => {
                 setError(false);
-
                 setQues({
                   ...ques,
                   question: e.target.value,
@@ -220,7 +250,11 @@ function CreateQuiz() {
               }}
               size="small"
             />
-            {added && <p className="errorPera">question has been added</p>}
+
+            {/* Display message if the question has been added */}
+            {added && <p className="errorPera">Question has been added</p>}
+
+            {/* Container for displaying options */}
             <div className="optioncontainer">
               {ques?.options.map((opt, i) => {
                 return (
@@ -228,7 +262,7 @@ function CreateQuiz() {
                     <div className="innerOption">
                       <span>{opt.title}</span>
                       <DeleteForeverIcon
-                        style={{ marginRight: "10px" }}
+                        style={{ marginRight: "6px" }}
                         onClick={() => {
                           deleteOption(opt.id);
                         }}
@@ -236,7 +270,7 @@ function CreateQuiz() {
                     </div>
 
                     <div className="correct">
-                      <span>correct option</span>
+                      <span>Correct Option</span>
                       <Checkbox
                         size="small"
                         onChange={(e) => {
@@ -252,27 +286,27 @@ function CreateQuiz() {
                   </div>
                 );
               })}
+            </div>
 
-              <div className="forOption">
-                <div className="innerOption">
-                  <TextField
-                    variant="outlined"
-                    inputRef={optionInputRef}
-                    style={{
-                      width: "58vw",
-                      border: "1px solid",
-                      backgroundColor: "white",
-                    }}
-                    onChange={addOption}
-                    size="small"
-                  />
+            {/* Input for adding options */}
+            <div className="inputOption">
+              <TextField
+                variant="outlined"
+                inputRef={optionInputRef}
+                placeholder="Add options"
+                style={{
+                  width: "auto",
+                  backgroundColor: "white",
+                }}
+                onChange={addOption}
+                size="small"
+              />
 
-                  <AddBoxIcon onClick={handleAddoption} />
-                </div>
-              </div>
+              <AddBoxIcon onClick={handleAddoption} />
             </div>
           </div>
 
+          {/* Button to add a new question */}
           <div className="addques">
             <Button
               variant="outlined"
@@ -282,14 +316,16 @@ function CreateQuiz() {
               <AddBoxIcon /> Add Question
             </Button>
           </div>
-        </div>
-        <div className="submit">
-          <Button variant="contained" onClick={handleAddQuiz}>
-            submit
-          </Button>
+
+          {/* Button to submit the quiz */}
+          <div className="submit">
+            <Button variant="contained" onClick={handleAddQuiz}>
+              Submit
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

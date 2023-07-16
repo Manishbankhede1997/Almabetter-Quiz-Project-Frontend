@@ -1,9 +1,13 @@
 import { TYPE } from "./Actions";
 
 //  this is our initital state of the app //
+
 const initialState = {
-  quiz: [],
-  name: "",
+  quiz: localStorage.getItem("quizData")
+    ? JSON.parse(localStorage.getItem("quizData"))
+    : [],
+
+  name: localStorage.getItem("name") || "",
   playQuiz: [],
   answers: [],
   selectedQuizIndex: 0,
@@ -14,28 +18,38 @@ const initialState = {
 export const reducer = (state = initialState, actions) => {
   if (actions.type === TYPE.ADDQUIZ) {
     console.log("redux add", actions.payload);
-    return { ...state, quiz: [...state.quiz, actions.payload] };
+    let localData = localStorage.getItem("quizData")
+      ? JSON.parse(localStorage.getItem("quizData"))
+      : [];
+    localStorage.setItem(
+      "quizData",
+      JSON.stringify([...localData, actions.payload])
+    );
+    return { ...state, quiz: JSON.parse(localStorage.getItem("quizData")) };
   }
 
-  if (actions.type === TYPE.TOGGLEACTIVE) {
-    const findElem = state.quiz.find((el) => el.id === actions.payload);
+  // if (actions.type === TYPE.TOGGLEACTIVE) {
+  //   const findElem = state.quiz.find((el) => el.id === actions.payload);
 
-    const filteredArr = state.quiz.filter((el) => el.id !== actions.payload);
+  //   const filteredArr = state.quiz.filter((el) => el.id !== actions.payload);
 
-    const newArr = [
-      { ...findElem, isActive: !findElem.isActive },
-      ...filteredArr,
-    ];
+  //   const newArr = [
+  //     { ...findElem, isActive: !findElem.isActive },
+  //     ...filteredArr,
+  //   ];
 
-    return {
-      ...state,
-      quiz: newArr,
-    };
-  }
+  //   return {
+  //     ...state,
+  //     quiz: newArr,
+  //   };
+  // }
 
   if (actions.type === TYPE.DELETEQUIZ) {
-    const filteredArr = state.quiz.filter((el) => el.id !== actions.payload);
-
+    let localData = localStorage.getItem("quizData")
+      ? JSON.parse(localStorage.getItem("quizData"))
+      : [];
+    const filteredArr = localData.filter((el) => el.id !== actions.payload);
+    localStorage.setItem("quizData", JSON.stringify(filteredArr));
     return {
       ...state,
       quiz: filteredArr,
@@ -43,6 +57,7 @@ export const reducer = (state = initialState, actions) => {
   }
 
   if (actions.type === TYPE.GETNAME) {
+    localStorage.setItem("name", actions.payload);
     return {
       ...state,
       name: actions.payload,

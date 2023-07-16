@@ -1,23 +1,71 @@
 .Navbar {
   display: flex;
-  height: 40px;
   width: 100%;
-  justify-content: space-between;
-  margin-bottom: 5px;
+  background-color: #ffffff;
   box-shadow: 0px 5px 5px rgb(235, 231, 231);
-}
-.Nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.logoNav {
-  size: 30px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
 }
 
-.Nav button {
-  gap: 20px;
+.navleft {
+  display: flex;
+  height: 40px;
+  width: 35%;
+  align-items: center;
+}
+
+.logoNav {
+  height: 40px;
+  width: auto;
+}
+
+.navRight {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7vw;
+  padding-right: 20px;
+  padding-top: 5px;
+  width: 65%;
+}
+
+.navRight button {
   font-weight: bold;
   cursor: pointer;
-  margin-right: 60px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: black;
+  transition: background-color 0.3s ease;
+}
+
+.navRight button:hover {
+  background-color: #d3f1b0;
+}
+
+@media (max-width: 768px) {
+  .navleft {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navRight {
+    gap: 3vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .navleft {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navRight {
+    display: flex;
+    gap: 0;
+    flex-direction: column;
+  }
 }

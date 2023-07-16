@@ -1,26 +1,18 @@
-.create-quiz {
-  display: flex;
-  height: 30vw;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.create-quiz button {
-  gap: 40px;
-  background-color: rgb(169, 187, 9);
-  height: 45%;
-  width: 30%;
-}
 .quiz {
   display: flex;
   justify-content: center;
-  flex-direction: row;
   align-items: center;
   gap: 10vw;
   margin-top: 20vh;
 }
+
+/*  the styles for smaller screens */
 @media (max-width: 768px) {
-  .Card {
-    flex-basis: 100%;
-    max-width: 100%;
+  .quiz {
+    flex-direction: column;
+    height: auto;
+    padding-top: 100px;
+    gap: 20px;
+    margin-top: 10vh;
   }
 }
