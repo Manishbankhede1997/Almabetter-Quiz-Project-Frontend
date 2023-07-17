@@ -6,7 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 
 function Homepage() {
   return (
@@ -19,8 +18,7 @@ function Homepage() {
               <CardMedia component="img" image="m1.png" alt="green iguana" />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                  {/* Button for creating a new quiz */}
-                  <Button>Create New Quiz</Button>
+                  CREATE-NEW-QUIZ
                 </Typography>
               </CardContent>
             </CardActionArea>

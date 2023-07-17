@@ -1,5 +1,5 @@
 import "./Table.css";
-import { setSelectedQuizIndex } from "../../Redux/Actions";
+import { setSelectedQuizIndex, toggleActive } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import {
@@ -17,14 +17,15 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { Switch } from "@mui/material";
 import ModalForDelete from "../../Components/ModalForDelete";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 function MyTable({ Quiz }) {
   // Get the list of all Quizzes from the redux store
   // const Quiz = useSelector((state) => state.reducer.quiz);
   const dispatch = useDispatch();
   const navigation = useNavigate();
-
+  const activeQuiz = useSelector((state) =>
+    state.reducer.quiz.map((obj) => obj.isActive)
+  );
   // State for controlling the delete modal
   const [modal, setModal] = useState(false);
   const [deleteId, setDeleteId] = useState(0);
@@ -42,8 +43,15 @@ function MyTable({ Quiz }) {
 
   // Function to play a specific quiz
   const PlayThis = (i) => {
-    dispatch(setSelectedQuizIndex(i));
-    navigation("/signup");
+    const isQuizActive = activeQuiz[i];
+    if (!isQuizActive) {
+      dispatch(setSelectedQuizIndex(i));
+      navigation("/signup");
+    }
+    // console.log("play index", setSelectedQuizIndex(i));
+  };
+  const handleActive = (id) => {
+    dispatch(toggleActive(id));
   };
 
   return (
@@ -81,8 +89,12 @@ function MyTable({ Quiz }) {
 
                   {/* Display the quiz status and a switch to toggle it */}
                   <TableCell>
-                    {quiz.isActive ? "Active" : "InActive"}
-                    <Switch defaultChecked color="secondary" />
+                    {quiz.isActive ? "InActive" : "Active"}
+                    <Switch
+                      defaultChecked={!quiz.isActive}
+                      color="secondary"
+                      onChange={(e) => handleActive(quiz.id)}
+                    />
                   </TableCell>
 
                   {/* Display the creation date of the quiz */}
@@ -92,13 +104,18 @@ function MyTable({ Quiz }) {
 
                   {/* Actions for each quiz (Edit, Delete, Play) */}
                   <TableCell>
-                    <div className="editTableicon">
-                      <BorderColorIcon /> {/* Edit icon */}
+                    <div>
+                      {/* <BorderColorIcon /> Edit icon */}
                       <DeleteForeverIcon
+                        fontSize="large"
                         onClick={() => openModal(quiz.id)}
-                      />{" "}
+                      />
                       {/* Delete icon */}
-                      <PlayCircleOutlineIcon onClick={() => PlayThis(i)} />{" "}
+                      <PlayCircleOutlineIcon
+                        fontSize="large"
+                        onClick={() => PlayThis(i)}
+                        disabled={quiz.isActive}
+                      />
                       {/* Play icon */}
                     </div>
                   </TableCell>

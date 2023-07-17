@@ -1,23 +1,26 @@
 import { TYPE } from "./Actions";
 
-//  this is our initital state of the app //
-
+// Initial state of the app
 const initialState = {
+  // Retrieve quiz data from localStorage or set it to an empty array if not available
   quiz: localStorage.getItem("quizData")
     ? JSON.parse(localStorage.getItem("quizData"))
     : [],
 
+  // Retrieve user name from localStorage or set it to an empty string if not available
   name: localStorage.getItem("name") || "",
-  playQuiz: [],
+
+  // Array to store user's answers to quiz questions
   answers: [],
+
+  // Index of the currently selected quiz
   selectedQuizIndex: 0,
 };
 
-// the reducer containes all the necessary functions in order to update our state accordingly //
-
+// Reducer function to update the state based on actions
 export const reducer = (state = initialState, actions) => {
   if (actions.type === TYPE.ADDQUIZ) {
-    console.log("redux add", actions.payload);
+    // Action to add a new quiz to the state and local storage
     let localData = localStorage.getItem("quizData")
       ? JSON.parse(localStorage.getItem("quizData"))
       : [];
@@ -28,23 +31,22 @@ export const reducer = (state = initialState, actions) => {
     return { ...state, quiz: JSON.parse(localStorage.getItem("quizData")) };
   }
 
-  // if (actions.type === TYPE.TOGGLEACTIVE) {
-  //   const findElem = state.quiz.find((el) => el.id === actions.payload);
-
-  //   const filteredArr = state.quiz.filter((el) => el.id !== actions.payload);
-
-  //   const newArr = [
-  //     { ...findElem, isActive: !findElem.isActive },
-  //     ...filteredArr,
-  //   ];
-
-  //   return {
-  //     ...state,
-  //     quiz: newArr,
-  //   };
-  // }
+  if (actions.type === TYPE.TOGGLEACTIVE) {
+    // Action to toggle the active status of a quiz
+    const findElem = state.quiz.find((el) => el.id === actions.payload);
+    const filteredArr = state.quiz.filter((el) => el.id !== actions.payload);
+    const newArr = [
+      { ...findElem, isActive: !findElem.isActive },
+      ...filteredArr,
+    ];
+    return {
+      ...state,
+      quiz: newArr,
+    };
+  }
 
   if (actions.type === TYPE.DELETEQUIZ) {
+    // Action to delete a quiz from the state and local storage
     let localData = localStorage.getItem("quizData")
       ? JSON.parse(localStorage.getItem("quizData"))
       : [];
@@ -57,6 +59,7 @@ export const reducer = (state = initialState, actions) => {
   }
 
   if (actions.type === TYPE.GETNAME) {
+    // Action to get the user's name and store it in the state and local storage
     localStorage.setItem("name", actions.payload);
     return {
       ...state,
@@ -64,17 +67,8 @@ export const reducer = (state = initialState, actions) => {
     };
   }
 
-  if (actions.type === TYPE.PLAYQUIZ) {
-    const findElem = state.quiz.find((el) => el.id === actions.payload);
-
-    return {
-      ...state,
-      playQuiz: findElem,
-    };
-  }
-
   if (actions.type === TYPE.GETANSWER) {
-    console.log(actions.payload);
+    // Action to add the user's answers to the state
     return {
       ...state,
       answers: [...state.answers, actions.payload],
@@ -82,20 +76,22 @@ export const reducer = (state = initialState, actions) => {
   }
 
   if (actions.type === TYPE.RESET) {
+    // Action to reset certain state properties to their initial values
     return {
       ...state,
       name: "",
-      playQuiz: [],
       answers: [],
     };
   }
+
   if (actions.type === TYPE.SET_SELECTED_QUIZ_INDEX) {
-    console.log("state", actions.payload, state);
+    // Action to set the index of the selected quiz
     return {
       ...state,
       selectedQuizIndex: actions.payload,
     };
   }
 
+  // Return the current state for unhandled actions
   return state;
 };

@@ -83,8 +83,12 @@ function CreateQuiz() {
         message: "Minimum one question required for the quiz",
       });
       return;
-    } else if (quiz.title.length < 5) {
-      setError({ error: true, message: "Please set a title first" });
+    } else if (quiz.title.length < 10 || quiz.title.length >= 30) {
+      setError({
+        error: true,
+        message:
+          "Please set title first (title should be minimum 10 character)",
+      });
     } else {
       setError(false);
 
@@ -116,10 +120,11 @@ function CreateQuiz() {
         message: "Please check the correct option",
       });
       return;
-    } else if (!ques.question) {
+    } else if (ques.question.length < 10 || ques.question.length > 300) {
       setError({
         error: true,
-        message: "Please write the question first",
+        message:
+          "Please write the question(minimum length of ques is 10 character)",
       });
       return;
     } else {
@@ -172,6 +177,25 @@ function CreateQuiz() {
       id: Date.now(),
       title: e.target.value,
     });
+  };
+
+  const [lastClickedOption, setLastClickedOption] = useState("");
+
+  // Function to handle checkbox click and set the correct option
+  const handleCheckboxClick = (title) => {
+    if (lastClickedOption === title) {
+      setQues((ques) => ({
+        ...ques,
+        correctoption: "",
+      }));
+      setLastClickedOption("");
+    } else {
+      setQues((ques) => ({
+        ...ques,
+        correctoption: title,
+      }));
+      setLastClickedOption(title);
+    }
   };
 
   return (
@@ -273,14 +297,8 @@ function CreateQuiz() {
                       <span>Correct Option</span>
                       <Checkbox
                         size="small"
-                        onChange={(e) => {
-                          if (e.target.value) {
-                            setQues({
-                              ...ques,
-                              correctoption: opt.title,
-                            });
-                          }
-                        }}
+                        onChange={() => handleCheckboxClick(opt.title)}
+                        checked={ques.correctoption === opt.title}
                       />
                     </div>
                   </div>
