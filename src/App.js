@@ -9,6 +9,7 @@ import PlayQuiz from "./Pages/PlayQuiz/PlayQuiz";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/CreateQuiz/Modals";
 import Signup from "./Pages/SignupPage/Signup";
+import Questions from "./Pages/showQusetions/Questions";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/HomePage" element={<HomePage />} />
           <Route path="/createQuiz" element={<CreateQuiz />} />
+          <Route path="/questions" element={<Questions />} />
           <Route path="/myQuiz" element={<MyQuiz />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/playQuiz" element={<PlayQuiz />} />

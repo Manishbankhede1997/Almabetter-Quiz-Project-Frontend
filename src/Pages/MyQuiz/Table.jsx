@@ -17,10 +17,11 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { Switch } from "@mui/material";
 import ModalForDelete from "../../Components/ModalForDelete";
 import { useNavigate } from "react-router-dom";
+import { deleteQuiz } from "../../Redux/Actions";
 
 function MyTable({ Quiz }) {
   // Get the list of all Quizzes from the redux store
-  // const Quiz = useSelector((state) => state.reducer.quiz);
+
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const activeQuiz = useSelector((state) =>
@@ -32,8 +33,10 @@ function MyTable({ Quiz }) {
 
   // Function to open the delete modal
   const openModal = (id) => {
-    setDeleteId(id);
     setModal(true);
+
+    setDeleteId(id);
+    console.log("setId", deleteId);
   };
 
   // Function to close the delete modal
@@ -41,6 +44,11 @@ function MyTable({ Quiz }) {
     setModal(false);
   };
 
+  const handleDeleteQuis = () => {
+    dispatch(deleteQuiz(deleteId));
+    closeModal();
+    console.log("deleted", deleteQuiz(deleteId));
+  };
   // Function to play a specific quiz
   const PlayThis = (i) => {
     const isQuizActive = activeQuiz[i];
@@ -61,6 +69,12 @@ function MyTable({ Quiz }) {
         <ModalForDelete
           closeModal={closeModal}
           openModal={openModal}
+          onModalClick={handleDeleteQuis}
+          Typographymsg1={"Are you sure you want to delete?"}
+          Typographymsg2={
+            " Deleting this will result in losing the file permanently and is not recoverable"
+          }
+          button={"delete"}
           id={deleteId}
         />
       )}

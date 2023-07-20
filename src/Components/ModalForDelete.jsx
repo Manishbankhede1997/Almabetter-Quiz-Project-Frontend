@@ -1,18 +1,15 @@
 import { Button, Modal, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import { useDispatch } from "react-redux";
 
-import { deleteQuiz } from "../Redux/Actions";
-
-const ModalForDelete = ({ closeModal, openModal, id }) => {
-  const dispatch = useDispatch();
-
-  // Function to handle the delete action and close the modal
-  const handleDeleteQuis = (id) => {
-    dispatch(deleteQuiz(id));
-    closeModal();
-  };
-
+const ModalForDelete = ({
+  closeModal,
+  openModal,
+  id,
+  Typographymsg1,
+  Typographymsg2,
+  button,
+  onModalClick,
+}) => {
   // Styles for the buttons and the button container
   const modalStyle = {
     display: "flex",
@@ -63,12 +60,11 @@ const ModalForDelete = ({ closeModal, openModal, id }) => {
               component="h2"
               style={{ fontWeight: "bold" }}
             >
-              Are you sure you want to delete?
+              {Typographymsg1}
             </Typography>
             {/* Modal Description */}
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Deleting this will result in losing the file permanently and is
-              not recoverable.
+              {Typographymsg2}
             </Typography>
             {/* Button container */}
             <div style={modalStyle}>
@@ -84,11 +80,9 @@ const ModalForDelete = ({ closeModal, openModal, id }) => {
               <Button
                 style={{ backgroundColor: "red", color: "white" }}
                 variant="outlined"
-                onClick={() => {
-                  handleDeleteQuis(id);
-                }}
+                onClick={onModalClick}
               >
-                Delete
+                {button}
               </Button>
             </div>
           </Box>

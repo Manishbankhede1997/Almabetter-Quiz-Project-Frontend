@@ -9,6 +9,7 @@ import { addQuiz } from "../../Redux/Actions";
 import Error from "../../Components/Error";
 import { useNavigate } from "react-router-dom";
 import HomePageModal from "./Modals";
+import ModalForDelete from "../../Components/ModalForDelete";
 
 function CreateQuiz() {
   // Refs to handle input elements
@@ -44,7 +45,20 @@ function CreateQuiz() {
     message: "",
   });
   const [added, setAdded] = useState(false);
+  const [modal, setModal] = useState(false);
+  // Function to open the delete modal
+  const openModal = () => {
+    setModal(true);
+  };
 
+  // Function to close the delete modal
+  const closeModal = () => {
+    setModal(false);
+    navigation("/myQuiz");
+  };
+  const handleShowQues = () => {
+    navigation("/questions");
+  };
   // Redux dispatch hook
   const dispatch = useDispatch();
 
@@ -91,9 +105,8 @@ function CreateQuiz() {
       });
     } else {
       setError(false);
-
+      openModal();
       dispatch(addQuiz(quiz));
-      navigation("/myQuiz");
     }
   };
 
@@ -202,6 +215,16 @@ function CreateQuiz() {
     <>
       {/* Modal for displaying the MCQ(Single Correct) button */}
       <HomePageModal buttonName="MCQ(Single Correct)" />
+      {modal && (
+        <ModalForDelete
+          closeModal={closeModal}
+          openModal={openModal}
+          onModalClick={handleShowQues}
+          button={"ShowQues"}
+          Typographymsg1={"Quiz Added suceesfully"}
+          Typographymsg2={"do you want to see all Question of this Quiz"}
+        />
+      )}
 
       <div className="quizbackground">
         <h1 className="heading">Create New Quiz</h1>

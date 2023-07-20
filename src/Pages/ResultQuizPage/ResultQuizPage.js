@@ -28,7 +28,7 @@ function ResultQuizPage() {
         {/* Display an image to represent congratulations */}
         <img
           className="congrate-img"
-          src="congratulations.jpg"
+          src="congrates.jpg"
           alt="congratulation"
         />
 

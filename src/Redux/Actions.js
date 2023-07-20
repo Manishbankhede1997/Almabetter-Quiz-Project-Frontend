@@ -7,6 +7,7 @@ export const TYPE = {
   GETANSWER: "GETANSWER", // Get the user's answers to quiz questions
   RESET: "RESET", // Reset the quiz state
   SET_SELECTED_QUIZ_INDEX: "SET_SELECTED_QUIZ_INDEX", // Set the index of the selected quiz
+  UPDATE_QUIZ: "UPDATE_QUIZ",
 };
 
 // Action Creators
@@ -65,3 +66,8 @@ export const setSelectedQuizIndex = (index) => {
     payload: index, // The index of the selected quiz
   };
 };
+
+export const updateQuiz = (updatedQuizData) => ({
+  type: TYPE.UPDATE_QUIZ,
+  payload: updatedQuizData,
+});

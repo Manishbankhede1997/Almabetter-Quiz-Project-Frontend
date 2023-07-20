@@ -74,7 +74,6 @@ function PlayQuiz() {
               {quesNo + 1}.{Quiz[quizNo].questions[quesNo].question}
             </p>
           </div>
-
           {/* Display the quiz options */}
           <div className="quizoption">
             {Quiz[quizNo].questions[quesNo].options.map((opt, i) => {
