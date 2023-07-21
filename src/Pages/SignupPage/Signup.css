@@ -3,15 +3,13 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin-top: 8vh;
 }
 
 .sign-bg {
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 5px 25px;
 
-  height: 90vh;
   width: 90vw;
   gap: 30px;
   background-color: whitesmoke;
@@ -44,13 +42,14 @@
 
 @media (max-width: 500px) {
   .sign-body {
-    height: auto;
+    height: 100vh;
+    margin-top: 40px;
   }
 
   .sign-bg {
     height: auto;
     width: auto;
-    padding-top: 80px;
+    margin-top: 10vh;
     gap: 20px;
   }
 

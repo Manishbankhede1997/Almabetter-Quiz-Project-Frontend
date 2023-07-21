@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   width: auto;
   background-color: rgb(205, 209, 211);
-  margin-top: 25px;
-  padding: 20px;
+
+  padding: 20px 20px 50px;
 }
 .heading {
   font-size: x-large;
@@ -85,14 +85,4 @@
 .inputoption {
   padding: 5px;
   margin: 10px;
-}
-@media (max-width: 768px) {
-  .quizbackground {
-    padding-top: 9vh;
-  }
-}
-@media (max-width: 400px) {
-  .quizbackground {
-    padding-top: 18vh;
-  }
 }

@@ -46,7 +46,8 @@
     height: auto;
   }
   .box {
-    margin-top: 12vh;
+    margin-top: 10vh;
+    margin: 0px 10px;
   }
 
   .congratulation {

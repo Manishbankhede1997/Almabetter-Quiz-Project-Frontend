@@ -21,8 +21,7 @@
 /* Media Query for smaller screens */
 @media (max-width: 768px) {
   .myQuiz {
-    flex-direction: column;
-    margin-top: 12vh;
+    flex-direction: column-reverse;
   }
   .tablemanage {
     padding: 1rem;
@@ -40,7 +39,6 @@
 @media (max-width: 400px) {
   .myQuiz {
     flex-direction: unset;
-    margin-top: 15vh;
   }
   .myQuizHeading {
     font-size: 20px;

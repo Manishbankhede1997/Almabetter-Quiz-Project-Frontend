@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 12vh;
   gap: 10vw;
-  margin-top: 20vh;
 }
 
 /*  the styles for smaller screens */
@@ -11,8 +11,7 @@
   .quiz {
     flex-direction: column;
     height: auto;
-    padding-top: 100px;
+    padding-top: 10px;
     gap: 20px;
-    margin-top: 10vh;
   }
 }

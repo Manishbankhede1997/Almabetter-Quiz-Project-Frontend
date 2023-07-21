@@ -1,8 +1,11 @@
+.full-bg {
+  height: initial;
+  background-color: lightgrey;
+}
 .ques-bg {
   padding: 0px 20px;
-  padding-top: 15vh;
-  height: 100%;
-  background-color: lightgrey;
+  height: 100vh;
+  background-repeat: repeat-y;
 }
 
 .question {
@@ -20,17 +23,21 @@
 .heading {
   font-size: x-large;
   font-weight: bold;
-  color: red;
+  color: rgb(54, 54, 54);
   text-align: center;
   padding-bottom: 5vh;
 }
 
 /* Mobile size screen (up to 767px) */
 @media (max-width: 767px) {
+  .full-bg {
+    height: 100%;
+    background-repeat: repeat;
+    background-color: lightgrey;
+  }
   .ques-bg {
-    padding: 0px 10px;
-    padding-top: 10vh;
-    margin-top: 100px;
+    padding: 10px;
+    height: auto;
   }
 
   .question {
@@ -46,9 +53,9 @@
   }
 }
 .btn {
-  margin-left: 25px;
+  margin: 10px 60px;
   background-color: lightgreen;
   color: black;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-radius: 10px;
 }

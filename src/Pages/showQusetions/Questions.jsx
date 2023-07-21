@@ -53,7 +53,7 @@ function Questions() {
   };
 
   return (
-    <div>
+    <div className="full-bg">
       <div className="ques-bg">
         <h2 className="heading">All Questions of This Quiz</h2>
         {quiz.length > 0 && quiz[quiz.length - 1].questions ? (
