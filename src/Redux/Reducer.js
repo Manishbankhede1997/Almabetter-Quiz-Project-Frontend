@@ -1,4 +1,3 @@
-// Import the action types from the Actions file
 import { TYPE } from "./Actions";
 
 // Initial state of the app

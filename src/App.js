@@ -7,7 +7,6 @@ import ResultQuizPage from "./Pages/ResultQuizPage/ResultQuizPage";
 import MyQuiz from "./Pages/MyQuiz/MyQuiz";
 import PlayQuiz from "./Pages/PlayQuiz/PlayQuiz";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./Pages/CreateQuiz/Modals";
 import Signup from "./Pages/SignupPage/Signup";
 import Questions from "./Pages/showQusetions/Questions";
 
@@ -17,8 +16,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/HomePage" element={<HomePage />} />
+          <Route exact path="/" element={<Homepage />} />
+
           <Route path="/createQuiz" element={<CreateQuiz />} />
           <Route path="/questions" element={<Questions />} />
           <Route path="/myQuiz" element={<MyQuiz />} />

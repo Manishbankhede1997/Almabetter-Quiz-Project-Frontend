@@ -1,4 +1,3 @@
-// Action Types
 export const TYPE = {
   ADDQUIZ: "ADDQUIZ", // Add a new quiz
   TOGGLEACTIVE: "TOGGLEACTIVE", // Toggle the active status of a quiz
@@ -9,8 +8,6 @@ export const TYPE = {
   SET_SELECTED_QUIZ_INDEX: "SET_SELECTED_QUIZ_INDEX", // Set the index of the selected quiz
   UPDATE_QUIZ: "UPDATE_QUIZ",
 };
-
-// Action Creators
 
 // Action to add a new quiz
 export const addQuiz = (data) => {
