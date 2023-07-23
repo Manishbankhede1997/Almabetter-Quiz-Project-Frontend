@@ -27,7 +27,11 @@ function Navbar() {
     <div className="Navbar">
       {/* Logo on the left side of the navbar */}
       <div className="navleft">
-        <img className="logoNav" src="logo-a.png" alt="Almabetter" />
+        <img
+          className="logoNav"
+          src="https://almablog-media.s3.ap-south-1.amazonaws.com/logo1_edfc81b31b.png"
+          alt="Almabetter"
+        />
       </div>
 
       {/* Burger menu icon on smaller screens */}
