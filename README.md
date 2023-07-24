@@ -12,4 +12,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Deployment
 cheak to app live on (click the below link to view app)
-this is netlify deployed link : https://final-alma-quiz-plateform.netlify.app/
+this is netlify deployed link : manish-almabetter-quiz-project.netlify.app
