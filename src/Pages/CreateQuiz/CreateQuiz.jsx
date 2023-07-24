@@ -265,7 +265,7 @@ function CreateQuiz() {
               color="neutral"
               variant="outlined"
               minRows={2}
-              style={{ width: "96%", padding: "2px" }}
+              style={{ width: "96%", padding: "2px", fontSize: "17px" }}
               placeholder="Add description"
               onChange={(e) => {
                 setQuiz({
