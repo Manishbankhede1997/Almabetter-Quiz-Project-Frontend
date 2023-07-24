@@ -64,6 +64,7 @@ function Questions() {
                 <>
                   Question {i + 1 + "). "}
                   <input
+                    className="inputField"
                     type="text"
                     value={updateValue}
                     onChange={(e) => setUpdateValue(e.target.value)}
@@ -77,6 +78,7 @@ function Questions() {
                           checked={correctOption === opt.title}
                         />
                         <input
+                          className="inputField"
                           type="text"
                           value={opt.title}
                           onChange={(e) => handleEditOption(j, e.target.value)}

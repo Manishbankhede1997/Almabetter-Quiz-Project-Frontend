@@ -16,8 +16,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Homepage />} />
-
+          <Route path="/" element={<Homepage />} />
           <Route path="/createQuiz" element={<CreateQuiz />} />
           <Route path="/questions" element={<Questions />} />
           <Route path="/myQuiz" element={<MyQuiz />} />

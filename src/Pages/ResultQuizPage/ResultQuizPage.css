@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 .box {
@@ -37,28 +37,4 @@
 
 .Button {
   margin-top: 1rem;
-}
-
-/* Media Query for max width 400px */
-@media (max-width: 400px) {
-  .congrate-img {
-    width: auto;
-    height: auto;
-  }
-  .box {
-    margin-top: 10vh;
-    margin: 0px 10px;
-  }
-
-  .congratulation {
-    font-size: 18px;
-  }
-
-  .finalscore {
-    font-size: 18px;
-  }
-
-  .Button {
-    margin-top: 0.5rem;
-  }
 }
