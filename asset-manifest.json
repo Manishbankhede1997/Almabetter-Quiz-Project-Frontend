@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Almabetter-Quiz-Project-Frontend/static/css/main.64da5519.css",
+    "main.js": "/Almabetter-Quiz-Project-Frontend/static/js/main.4bf865a1.js",
+    "static/js/787.045878db.chunk.js": "/Almabetter-Quiz-Project-Frontend/static/js/787.045878db.chunk.js",
+    "index.html": "/Almabetter-Quiz-Project-Frontend/index.html",
+    "main.64da5519.css.map": "/Almabetter-Quiz-Project-Frontend/static/css/main.64da5519.css.map",
+    "main.4bf865a1.js.map": "/Almabetter-Quiz-Project-Frontend/static/js/main.4bf865a1.js.map",
+    "787.045878db.chunk.js.map": "/Almabetter-Quiz-Project-Frontend/static/js/787.045878db.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64da5519.css",
+    "static/js/main.4bf865a1.js"
+  ]
+}
