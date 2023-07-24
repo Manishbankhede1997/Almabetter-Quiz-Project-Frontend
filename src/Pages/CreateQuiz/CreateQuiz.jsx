@@ -86,7 +86,7 @@ function CreateQuiz() {
     return () => {
       document.removeEventListener("keydown", listener);
     };
-  }, [option.title]);
+  });
 
   // Function to add the quiz and handle validation
   const handleAddQuiz = (e) => {

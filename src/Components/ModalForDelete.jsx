@@ -19,13 +19,13 @@ const ModalForDelete = ({
   };
 
   // Styles for the modal content container
-  const modalBack = {
-    display: "flex",
-    flexDirection: "column",
-    padding: "20px",
-    color: "black",
-    backgroundColor: "white",
-  };
+  // const modalBack = {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   padding: "20px",
+  //   color: "black",
+  //   backgroundColor: "white",
+  // };
 
   return (
     <div>
