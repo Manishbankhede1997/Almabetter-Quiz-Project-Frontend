@@ -31,7 +31,7 @@
 }
 .submit {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   height: 100%;
   width: auto;
   padding: 10px 15px;
@@ -54,7 +54,7 @@
 .optioncontainer {
   display: flex;
   margin: 10px 0px;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
   width: auto;
   gap: 10px;
