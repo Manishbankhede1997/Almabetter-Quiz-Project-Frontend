@@ -131,7 +131,7 @@ function Homepage() {
 
       {/* Play Quiz Card */}
       <Link to="/signup" style={linkStyle}>
-        <Card sx={{ maxWidth: 290, borderRadius: "10%" }}>
+        <Card sx={{ maxWidth: 250, padding: "10px 0px", borderRadius: "10%" }}>
           <CardActionArea>
             <CardMedia
               component="img"
