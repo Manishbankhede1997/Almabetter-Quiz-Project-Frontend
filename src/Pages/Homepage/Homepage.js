@@ -94,7 +94,7 @@ function Homepage() {
     <div className="quiz">
       {/* Create New Quiz Card */}
       <Link to="/createQuiz" style={linkStyle}>
-        <Card sx={{ maxWidth: 200, borderRadius: "10%" }}>
+        <Card sx={{ maxWidth: 240, borderRadius: "10%" }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -112,7 +112,7 @@ function Homepage() {
 
       {/* My Quiz Card */}
       <Link to="/myQuiz" style={linkStyle}>
-        <Card sx={{ maxWidth: 200, borderRadius: "10%" }}>
+        <Card sx={{ maxWidth: 240, borderRadius: "10%" }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -131,7 +131,7 @@ function Homepage() {
 
       {/* Play Quiz Card */}
       <Link to="/signup" style={linkStyle}>
-        <Card sx={{ maxWidth: 200, borderRadius: "10%" }}>
+        <Card sx={{ maxWidth: 290, borderRadius: "10%" }}>
           <CardActionArea>
             <CardMedia
               component="img"
